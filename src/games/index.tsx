@@ -66,14 +66,14 @@ export const GAMES: GameBundle<GameMeta>[] = [
     app: dynamic(() => import("./Slots")),
   },
   {
-    id: "image-chooser",  // Yeni oyunun ID'si
+    id: "new-game",  // Yeni oyunun ID'si
     meta: {
       background: "#ffffff",
-      name: "Image Chooser", // Oyun adı
+      name: "new Game", // Oyun adı
       image: "/games/image-chooser-logo.png",  // Oyunun logosu
       description: `In this game, players will choose between two images. One will win and the other will lose. It's all about selecting the right image and hoping for the best!`,
       volatility: 2,
     },
-    app: dynamic(() => import("./ImageChooser")), // Dinamik olarak yeni oyunu ekliyoruz
+    app: dynamic(() => import("./newGame")), // Dinamik olarak yeni oyunu ekliyoruz
   },
 ];
