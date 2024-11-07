@@ -74,6 +74,8 @@ export const GAMES: GameBundle<GameMeta>[] = [
       description: `In this game, players will choose between two images. One will win and the other will lose. It's all about selecting the right image and hoping for the best!`,
       volatility: 2,
     },
-    app: dynamic(() => import("./newGame")), // Dinamik olarak yeni oyunu ekliyoruz
+    
+    app: dynamic(() => import("./src/games/newGame"))
+
   },
 ];
