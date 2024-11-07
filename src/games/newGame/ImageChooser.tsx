@@ -7,8 +7,8 @@ const ImageChooser: React.FC = () => {
   const [result, setResult] = useState<string>('');
 
   const images = [
-    "/images/image1.jpg", // İlk resim
-    "/images/image2.jpg", // İkinci resim
+    "/image1.jpg", // İlk resim
+    "/image2.jpg", // İkinci resim
   ];
 
   const handleSelectImage = (image: string) => {
