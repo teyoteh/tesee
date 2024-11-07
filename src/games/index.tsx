@@ -23,7 +23,7 @@ export const GAMES: GameBundle<GameMeta>[] = [
     },
     app: dynamic(() => import("./Flip")),
   },
-  {
+  { 
     id: "crash",
     meta: {
       background: "#e8dccb",
