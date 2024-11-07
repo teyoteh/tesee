@@ -12,7 +12,7 @@ const WIN_WHITE_ROOSTER_GIF = "/games/cockfight/whitecockwins.gif";
 const WIN_BLACK_ROOSTER_GIF = "/games/cockfight/blackcockwins.gif";
 
 // Enum for side selection
-const SIDES = {
+const SIDES = { 
   white: "white",
   black: "black",
 };
@@ -99,7 +99,7 @@ function CockFight() {
     height: "100%",
     width: "100%",
   };
- 
+
   return (
     <>
       <GambaUi.Portal target="screen">
