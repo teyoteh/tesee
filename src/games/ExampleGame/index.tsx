@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 function Game() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [resultImage, setResultImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [resultImage, setResultImage] = useState<string | null>(null);
   const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -11,8 +11,8 @@ function Game() {
   }, []);
 
   const handleImageClick = (imageName: string) => {
-  setSelectedImage(imageName);
-};
+    setSelectedImage(imageName);
+  };
 
   const handlePlay = () => {
     if (selectedImage) {
