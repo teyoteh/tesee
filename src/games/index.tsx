@@ -67,5 +67,15 @@ export const GAMES: GameBundle<GameMeta>[] = [
     },
     app: dynamic(() => import("./Slots")),
   },
+    {
+    id: "trump",
+    meta: {
+      background: "#7ed957",
+      name: "Trump",
+      image: "/games/logo.png",
+      description: `Trump is an underground game found only if you know somebody. Choose the winning cock, 2x your bet.`,
+    },
+    app: dynamic(() => import("./trump")),
+  },
   
 ];
