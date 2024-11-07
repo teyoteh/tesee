@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react';
 function Game() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [resultImage, setResultImage] = useState(null);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<string[]>([]); // Tip belirtildi
 
   useEffect(() => {
-      // Resimlerin isimlerini bir diziye kaydedin
-      const imageFiles = ['resim1.jpg', 'resim2.png'];
-      setImages(imageFiles);
-
+    const imageFiles = ['resim1.jpg', 'resim2.png'];
+    setImages(imageFiles);
   }, []);
+
+
+export default Game;
 
 
   const handleImageClick = (imageName) => {
