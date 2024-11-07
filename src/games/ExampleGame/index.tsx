@@ -3,16 +3,30 @@ import { useState, useEffect } from 'react';
 function Game() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [resultImage, setResultImage] = useState(null);
-  const [images, setImages] = useState<string[]>([]); // Tip belirtildi
+  const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
     const imageFiles = ['resim1.jpg', 'resim2.png'];
     setImages(imageFiles);
   }, []);
 
+  const handleImageClick = (imageName) => {
+    setSelectedImage(imageName);
+  };
 
-export default Game;
+  const handlePlay = () => {
+    if (selectedImage) {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      setResultImage(images[randomIndex]);
+    }
+  };
 
+  return (
+    // ... JSX kodu burada
+  );
+}
+
+export default Game; // Doğru yer!
 
   const handleImageClick = (imageName) => {
     setSelectedImage(imageName);
