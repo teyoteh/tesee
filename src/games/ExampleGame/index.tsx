@@ -22,32 +22,13 @@ function Game() {
   };
 
   return (
-    // ... JSX kodu burada
-  );
-}
-
-export default Game; // Doğru yer!
-
-  const handleImageClick = (imageName) => {
-    setSelectedImage(imageName);
-  };
-
-  const handlePlay = () => {
-    if (selectedImage) {
-      const randomIndex = Math.floor(Math.random() * images.length);
-      setResultImage(images[randomIndex]);
-    }
-  };
-
-
-  return (
     <div>
       <h2>Resim Seç</h2>
       <div>
         {images.map((image) => (
           <img
             key={image}
-            src={`/images/${image}`} // public klasörüne göre yolu belirtin
+            src={`/images/${image}`}
             alt={image}
             onClick={() => handleImageClick(image)}
             style={{
