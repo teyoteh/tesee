@@ -67,15 +67,6 @@ export const GAMES: GameBundle<GameMeta>[] = [
     },
     app: dynamic(() => import("./Slots")),
   },
-    {
-    id: "cockfight",
-    meta: {
-      background: "#7ed957",
-      name: "Cockfight",
-      image: "/games/logo.png",
-      description: `Degen Cockfight is an underground game found only if you know somebody. Choose the winning cock, 2x your bet.`,
-    },
-    app: dynamic(() => import("./CockFight")),
-  },
+    
   
 ];
