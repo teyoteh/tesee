@@ -65,5 +65,16 @@ export const GAMES: GameBundle<GameMeta>[] = [
     },
     app: dynamic(() => import("./Slots")),
   },
+   {
+    id: "example-game", // Yeni oyunun ID'si
+    meta: {
+      background: "#e8dccb", // Arka plan rengi
+      name: "Example Game", // Oyunun adı
+      image: "/games/logo.png", // Oyunun logosu (gerekirse)
+      description: "Yazı tura benzeri oyun.", // Oyunun açıklaması
+      volatility: 1, // Oyunun volatilitesi (gerekirse)
+    },
+    app: dynamic(() => import("./ExampleGame")), // ExampleGame bileşenini import edin
+  },
 
 ];
