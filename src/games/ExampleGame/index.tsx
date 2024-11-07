@@ -10,9 +10,9 @@ function Game() {
     setImages(imageFiles);
   }, []);
 
-  const handleImageClick = (imageName) => {
-    setSelectedImage(imageName);
-  };
+  const handleImageClick = (imageName: string) => {
+  setSelectedImage(imageName);
+};
 
   const handlePlay = () => {
     if (selectedImage) {
