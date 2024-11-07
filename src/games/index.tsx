@@ -76,6 +76,5 @@ export const GAMES: GameBundle<GameMeta>[] = [
     },
     app: dynamic(() => import("./ExampleGame")), // ExampleGame bileşenini import edin
   },
-];
 
 ];
