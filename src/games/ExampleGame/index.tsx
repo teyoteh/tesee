@@ -1,97 +1,62 @@
-import { GambaUi, useWagerInput } from "gamba-react-ui-v2";
-import React, { useState } from "react";
+import { useState, useEffect } from 'react';
 
-import { useWallet } from "@solana/wallet-adapter-react";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+function Game() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [resultImage, setResultImage] = useState<string | null>(null);
+  const [images, setImages] = useState<string[]>([]);
 
-export default function ExampleGame() {
-  const game = GambaUi.useGame();
-  const [side, setSide] = useState("Heads");
-  const [wager, setWager] = useWagerInput();
-  const [gameState, setGameState] = useState("idle");
+  useEffect(() => {
+    const imageFiles = ['resim1.jpg', 'resim2.png'];
+    setImages(imageFiles);
+  }, []);
 
-  const walletModal = useWalletModal();
-  const wallet = useWallet();
-
-  const connect = () => {
-    if (wallet.wallet) {
-      wallet.connect();
-    } else {
-      walletModal.setVisible(true);
-    }
+  const handleImageClick = (imageName: string) => {
+    setSelectedImage(imageName);
   };
 
-  const play = async () => {
-    try {
-      setGameState("flipping");
-
-      await game.play({
-        wager,
-        bet: side === "Heads" ? [2, 0] : [0, 2],
-      });
-      const result = await game.result();
-
-      if (result.payout > 0) {
-        setGameState("win");
-      } else {
-        setGameState("loss");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setGameState("error");
+  const handlePlay = () => {
+    if (selectedImage) {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      setResultImage(images[randomIndex]);
     }
   };
 
   return (
-    <>
-      <GambaUi.Portal target="screen">
-        <GambaUi.Responsive>
-          <div
+    <div>
+      <h2>Resim Seç</h2>
+      <div>
+        {images.map((image) => (
+          <img
+            key={image}
+            src={`/images/${image}`}
+            alt={image}
+            onClick={() => handleImageClick(image)}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              gap: "1rem",
+              cursor: 'pointer',
+              margin: '10px',
+              border: selectedImage === image ? '2px solid green' : 'none',
             }}
-          >
-            {gameState === "idle" && (
-              <p>
-                Welcome to Coin Flip! Choose your side, Place your wager and
-                flip for double or nothing!
-              </p>
-            )}
-            {gameState === "flipping" && <p>Flipping the coin...</p>}
-            {gameState === "win" && <p>Congratulations! You won!</p>}
-            {gameState === "loss" && <p>Unlucky! You lost. Try again?</p>}
-            {gameState === "error" && (
-              <p>Error: Something went wrong during the game.</p>
-            )}
-            <GambaUi.Button
-              disabled={gameState === "flipping"}
-              onClick={() => setSide(side === "Heads" ? "Tails" : "Heads")}
-            >
-              {side}
-            </GambaUi.Button>
-          </div>
-        </GambaUi.Responsive>
-      </GambaUi.Portal>
-      <GambaUi.Portal target="controls">
-        <GambaUi.WagerInput value={wager} onChange={setWager} />
-        {wallet.connected ? (
-          <GambaUi.PlayButton
-            onClick={play}
-            disabled={gameState === "flipping"}
-          >
-            Flip
-          </GambaUi.PlayButton>
-        ) : (
-          <GambaUi.Button main onClick={connect}>
-            Connect
-          </GambaUi.Button>
-        )}
-      </GambaUi.Portal>
-    </>
+          />
+        ))}
+      </div>
+
+      <button onClick={handlePlay} disabled={!selectedImage}>
+        Play
+      </button>
+
+      {resultImage && (
+        <div>
+          <h2>Sonuç</h2>
+          <img src={`/images/${resultImage}`} alt="Sonuç Resmi" />
+          {resultImage === selectedImage ? (
+            <p>Kazandınız!</p>
+          ) : (
+            <p>Kaybettiniz!</p>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
+
+export default Game;
